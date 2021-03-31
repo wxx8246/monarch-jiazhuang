@@ -1,0 +1,76 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/jz/index",
+    "pages/my/index",
+    "pages/brand/index",
+    "pages/product/index",
+    "pages/collection/index",
+    "pages/productDetails/index",
+    "pages/feedback/index",
+    "pages/productSearch/index",
+    "pages/activity/index"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#f2f2f2",
+    "navigationBarTitleText": "帝王家装通",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#8b8e8c",
+    "selectedColor": "#e44f39",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/product/index",
+        "iconPath": "images/nav/ic_catefory_normal.png",
+        "selectedIconPath": "images/nav/ic_catefory_pressed.png",
+        "text": "产品"
+      },
+      {
+        "pagePath": "pages/brand/index",
+        "iconPath": "images/nav/cart-off.png",
+        "selectedIconPath": "images/nav/cart-on.png",
+        "text": "卫浴风"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "images/nav/my-off.png",
+        "selectedIconPath": "images/nav/my-on.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "parser": "components/parser.20200414.min/parser",
+    "wux-search-bar": "components/wux/search-bar/index",
+    "wux-button": "components/wux/button/index",
+    "wux-icon": "components/wux/icon/index",
+    "wux-cell-group": "components/wux/cell-group/index",
+    "wux-cell": "components/wux/cell/index",
+    "wux-textarea": "components/wux/textarea/index",
+    "wux-refresher": "components/wux/refresher/index",
+    "wux-spin": "components/wux/spin/index",
+    "wux-input": "components/wux/input/index",
+    "wux-swipe-action": "components/wux/swipe-action/index",
+    "wux-timeline": "components/wux/timeline/index",
+    "wux-timeline-item": "components/wux/timeline-item/index",
+    "wux-animation-group": "components/wux/animation-group/index",
+    "wux-popup": "components/wux/popup/index",
+    "wux-checkbox-group": "components/wux/checkbox-group/index",
+    "wux-checkbox": "components/wux/checkbox/index"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

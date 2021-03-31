@@ -1,0 +1,102 @@
+
+page{
+    background-color: white;
+}
+.list{
+    width: 96%;
+    margin: 20rpx auto 70rpx;
+    background-color: white;
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+.listItem{
+    width: 100%;
+    height: 350rpx;
+    display: flex;
+    align-items: flex-end;
+}
+.listItem image{
+    width: 100%;
+    height: 350rpx;
+}
+.listItemTitle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 28rpx;
+    line-height: 56rpx;
+    color: white;
+    padding: 0 6rpx;
+    box-sizing: border-box;
+    background-color: rgba(123, 120, 120, 0.53);
+}
+.listItemTitleT1{
+    max-width: 75%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.listItemTitleT2{
+    width: 25%;
+    text-align: right;
+}
+.listItemTitleT2 .icon{
+    vertical-align: middle;
+    margin-right: 8rpx;
+}
+.listItemSub{
+    padding: 4px 6rpx;
+    box-sizing: border-box;
+    width: 100%;
+    margin: auto;
+    line-height: 46rpx;
+    font-size: 28rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-align: justify;
+    min-height: 84rpx;
+}
+.divV{
+    padding: 20rpx;
+    margin-left: 80rpx;
+}
+
+.timeline_left{
+    position: absolute;
+    left: -46px;
+    top: -3px;
+    width: 80rpx;
+    text-align: center;
+    color: #bdb9b9;
+}
+.timeline_left_t1{
+    font-size: 40rpx;
+    color: black ;
+}
+.time_msg_t1{
+    font-size: 32rpx;
+    line-height: 60rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.time_msg_t2{
+    font-size: 28rpx;
+    line-height: 60rpx;
+    color: #bdb9b9;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.img{
+    border-radius: 10rpx;
+    width: 400rpx;
+    height: 680rpx;
+}

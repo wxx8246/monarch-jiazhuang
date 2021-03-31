@@ -1,0 +1,12 @@
+<view class="input">
+    <wux-input placeholder="请填写手机号码" label="手机号码" value="{{ mobile }}" controlled error="{{ error }}" type="number" bind:change="onChangePhone" bind:error="onError" />
+</view>
+<view class="input">
+    <wux-input placeholder="请填写反馈主题" label="反馈主题" bind:change="onChangeFeedType" value="{{ feedType }}" />
+</view>
+<view class="textarea">
+    <wux-textarea value="{{ content }}"  bind:change="onChangeContent" maxlength="500" hasCount rows="5" label="反馈内容" placeholder="请填写反馈内容" />
+</view>
+<view class="btnV">
+    <wux-button  block type="positive" bind:click="onSubmit" >提交反馈</wux-button>
+</view>

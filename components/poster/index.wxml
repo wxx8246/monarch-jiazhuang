@@ -1,0 +1,28 @@
+<view hidden="{{hidden}}" class="poster {{showPoster? 'show' : 'hide'}}" catchtap="close" catchtouchmove="{{touchMove}}">
+	<view class="poster-content" style="width: {{canvasWidth}}px; margin-top: {{navHeight/2 + 'px'}}" catchtap="stop">
+		<!-- 关闭按钮 -->
+		<view class="poster-icon-wrap" catchtap="close">
+		</view>
+
+		<!-- 海报画布 -->
+		<canvas class="poster-canvas" canvas-id="{{id}}" style="height: {{canvasHeight}}px"></canvas>
+
+		<view class="poster-img-area">
+			<view class="direction-area" wx:if="{{imageUrlNum>1&&!isSaveAll}}">
+				<view class="lee-icon icon-arrow-left" bindtap="loadLastPoster"></view>
+				<view class="lee-icon icon-arrow-right" bindtap="loadNextPoster"></view>
+			</view>
+			<!-- 海报图片 -->
+			<image src="{{path}}" class="poster-img poster-class" style="height: {{canvasHeight}}px" show-menu-by-longpress="{{true}}" />
+
+		</view>
+		<view class="poster-share-text" wx:if="{{shareText}}" bindtap="copyTipText">{{shareText}}</view>
+		<!-- 保存到相册、分享按钮 -->
+		<view class="poster-btn-wrap">
+			<!-- <button class="poster-btn poster-btn-share" open-type="share">分享到好友</button> -->
+			<view class="poster-btn poster-btn-save poster-save-class " catchtap="{{isSaveAll?'saveAllPoster':'savePoster'}}">
+				<view class="poster-btn-txt">{{canvasText}}</view>
+			</view>
+		</view>
+	</view>
+</view>

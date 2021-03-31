@@ -1,0 +1,161 @@
+<wxs module="m1">
+    //查看是否选中该选项
+    var showChoose = function(list, item){ 
+        return list.filter(function(its){
+        return its.b == item
+        }).length > 0
+    }
+    //查看是否该划线
+    var canIchooseArr = function(list, item){ 
+        var flag = true
+       
+        list.map(function(a){
+            if(a == item){
+                flag = false
+            }
+        })
+        return flag
+    }
+
+    module.exports.showChoose = showChoose;
+    module.exports.canIchooseArr = canIchooseArr;
+</wxs>
+<!-- 轮播图 -->
+<view class="swiper-container">
+    <swiper class="swiper1" indicator-dots="true" indicator-active-color="#fff" circular>
+        <swiper-item wx:if="{{details.videoUrl != ''}}">
+            <video src="{{details.videoUrl}}" controls="false" autoplay="true" style="width:100%;height:100%" />
+        </swiper-item>
+        <swiper-item wx:for="{{details.gallery}}" wx:key="index">
+            <image mode="aspectFill" src="{{item}}" data-src="{{item}}" bind:tap="showImg" />
+        </swiper-item>
+    </swiper>
+</view>
+<view class="title">{{details.name}}</view>
+<view class="price">¥ {{details.counterPrice}}</view>
+<!-- <view class="tagShare">
+    <view class="tag">
+        <text>{{details.brief}}</text>
+    </view>
+    <view class="share" bind:tap="shareOn">
+        <wux-icon class="shareIcon" type="md-share" size="26" />
+    </view>
+</view> -->
+<view class="tagShare">
+    <view class="tag">
+        <text>{{details.brief}}</text>
+    </view>
+    <view class="share">
+        <button open-type='share'>
+            <wux-icon type="md-share" size="26" />
+        </button>
+    </view>
+</view>
+<view class="vr" bind:tap="vrOn" wx:if="{{vrList.length > 0}}">
+    <view class="vr_tag">
+        <text>{{'产品VR实景空间'}}</text>
+    </view>
+    <view class="vr_img">
+        <image src="/images/vr1.png" />
+    </view>
+</view>
+<view class="specifications" bind:tap="popOn">
+    <view class="specifications_tag">
+        <text>{{'规格参数'}}</text>
+    </view>
+    <view class="specifications_text">
+        <wux-icon wx:if="{{specification_choose.isStart}}" size="26" color="#797271" type="ios-more"></wux-icon>
+        <text class="" wx:else> 已选:<text wx:for="{{specification_choose.specification}}" wx:key="index"><text wx:if="{{index != 0}}">,</text>{{item.b}}</text>
+        </text>
+    </view>
+</view>
+<view class="details">
+    <view class="detailsTitle">图文详情</view>
+    <parser class="richText" html="{{details.detail}}" />
+</view>
+<view class="collection" bind:tap="collect">
+    <image mode="aspectFill" src="/images/shoucang.png" />
+    <text>{{collect}}</text>
+</view>
+<!-- 规格 -->
+<wux-popup position="bottom" visible="{{ popVisible }}" bind:close="popOnClose" catchtouchmove="emptyFunction">
+    <view class="popDiv">
+        <view class="pooDiv_top">
+            <image class="pooDiv_top_img" src="{{specification_choose.picUrl}}" data-src="{{specification_choose.picUrl}}" bind:tap="showImg" />
+            <view class="pooDiv_top_view">
+                <view class="pooDiv_top_view_specification">
+                    <!-- <text wx:for="{{specification_choose.specification}}" wx:key="index"><text wx:if="{{index != 0}}">,</text>{{item.b}}</text> -->
+                    <text wx:if="{{specification_choose.name}}" >已选: {{specification_choose.name}}</text>
+                </view>
+                <view class="pooDiv_top_view_specification">
+                    <text wx:if="{{specification_choose.code}}" >编码: {{specification_choose.code}}</text>
+                </view>
+                <text class="pooDiv_top_view_price">¥ {{specification_choose.value}}{{specification_choose.company}}</text>
+            </view>
+        </view>
+        <scroll-view class="popDiv_center" scroll-y="true" style="max-height: 50vh;">
+            <view wx:for="{{specificationList}}" wx:key="index">
+                <view class="popDiv_center_title">{{item.a}}</view>
+                <view wx:for="{{item.b}}" wx:for-item="its" wx:key="index" class="{{[m1.canIchooseArr(cantChooseItem,its)?'':'','popDiv_center_item',m1.showChoose(specification_choose.specification,its) ? 'chooseItme' : '' ]}}" bind:tap="chooseSpecifications" data-type="{{item.a}}" data-choose="{{its}}">
+                    <text class="popDiv_center_item_text">{{its}}</text>
+                </view>
+            </view>
+             <parser  class="richText details " html="{{specification_choose.content}}" />
+        </scroll-view>
+    </view>
+</wux-popup>
+<!-- VR -->
+<wux-popup position="bottom" visible="{{ vrVisible }}" bind:close="vrOnClose" catchtouchmove="emptyFunction">
+    <view class="popDiv">
+        <!-- <view class="pooDiv_top">
+            <image class="pooDiv_top_img" src="{{vr_choose.picUrl}}" data-src="{{vr_choose.picUrl}}" bind:tap="showImg" />
+            <view class="pooDiv_top_view">
+                <text class="pooDiv_top_view_specification">{{vr_choose.specification}}</text>
+                <text class="pooDiv_top_view_price">{{vr_choose.value}}</text>
+            </view>
+        </view>
+        <scroll-view class="popDiv_center" scroll-y="true" style="max-height: 500rpx;">
+            <view class="popDiv_center_title">{{'配色标准'}}</view>
+            <view class="{{['popDiv_center_item',item.specification == vr_choose.specification ? 'chooseItme' : '' ]}}" wx:for="{{vrList}}" wx:key="index" bind:tap="chooseVr" data-item="{{item}}">
+                <image class="popDiv_center_item_img" src="{{item.picUrl}}" />
+                <text class="popDiv_center_item_text">{{item.specification}}</text>
+            </view>
+        </scroll-view> -->
+        <view class="pooDiv_top">
+            <image class="pooDiv_top_img" src="{{vr_choose.picUrl}}" data-src="{{vr_choose.picUrl}}" bind:tap="showImg" />
+            <view class="pooDiv_top_view">
+                <view class="pooDiv_top_view_specification">
+                    <text wx:for="{{vr_choose.specification}}" wx:key="index"><text wx:if="{{index != 0}}">,</text>{{item.b}}</text>
+                </view>
+                <text class="pooDiv_top_view_price">¥ {{vr_choose.value}}</text>
+            </view>
+        </view>
+        <scroll-view class="popDiv_center" scroll-y="true" style="max-height: 50vh;">
+            <view wx:for="{{vrList}}" wx:key="index">
+                <view class="popDiv_center_title">{{item.a}}</view>
+                <view wx:for="{{item.b}}" wx:for-item="its" wx:key="index" class="{{[m1.canIchooseArr(cantChooseItem,its)?'':'','popDiv_center_item',m1.showChoose(vr_choose.specification,its) ? 'chooseItme' : '' ]}}" bind:tap="chooseVr" data-type="{{item.a}}" data-choose="{{its}}">
+                    <text class="popDiv_center_item_text">{{its}}</text>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="popDiv_bottom">
+            <image mode="widthFix" src="/images/vr1.png" bindtap="goVr" />
+        </view>
+    </view>
+</wux-popup>
+<!-- 分享 -->
+<!-- <wux-popup position="bottom" visible="{{ shareVisible }}" bind:close="shareOnClose">
+    <view class="shareDiv">
+        <view class="shareDiv_title">分享到</view>
+        <view class="shareDiv_center">
+            <button class="shareDiv_center_b" open-type='share' bind:tap="shareOnClose">
+                <image mode="widthFix" src="/images/wx.png" />
+                <view>微信好友</view>
+            </button>
+            <button class="shareDiv_center_b" bind:tap="sharePoster">
+                <image mode="widthFix" src="/images/hb.png" />
+                <view>生成海报</view>
+            </button>
+        </view>
+    </view>
+</wux-popup> -->

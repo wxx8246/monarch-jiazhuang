@@ -1,0 +1,266 @@
+.poster {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 1);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.poster.show {
+  opacity: 1;
+  z-index: 9999;
+}
+
+.poster.hide {
+  opacity: 0;
+  z-index: -100;
+}
+
+.poster .poster-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 100vh;
+}
+
+.poster-content .poster-icon-wrap {
+  position: absolute;
+  z-index: 1101;
+  top: 0;
+  left: 0;
+  width: 80rpx;
+  height: 80rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom-right-radius: 100%;
+}
+
+.poster-content .poster-icon-wrap::after,
+.poster-content .poster-icon-wrap::before {
+  content: '';
+  position: absolute;
+  width: 2rpx;
+  height: 34rpx;
+  background-color: #fff;
+  top: 15rpx;
+  left: 30rpx;
+}
+
+.poster-content .poster-icon-wrap::before {
+  transform: rotateZ(45deg);
+}
+
+.poster-content .poster-icon-wrap::after {
+  transform: rotateZ(-45deg);
+}
+
+.poster .poster-content .poster-canvas {
+  position: fixed;
+  top: -1000vh;
+  width: 100%;
+}
+
+.poster-btn-wrap {
+  position: relative;
+  margin-top: 30rpx;
+  z-index: 1101;
+  width: 100%;
+  height: 74rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  left: 0%;
+}
+
+.poster-btn {
+  width: 100%;
+  height: 100%;
+  font-size: 28rpx;
+  border-radius: 47rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background-color: #cb9822;
+  color: #fff;
+  padding: 0;
+}
+
+.poster-btn+.poster-btn {
+  margin-left: 20rpx;
+}
+
+.poster-btn image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 16rpx;
+}
+
+.poster-btn-save {
+  background-color: #e5a600;
+}
+
+.poster-btn-share {
+  color: #fff;
+  background-color: #F25542;
+}
+
+.poster-btn-wrap .poster-btn-img {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 18rpx;
+}
+
+.poster-img-area {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.poster-share-text {
+  color: #fff;
+  padding: 0 20rpx;
+  font-size: 24rpx;
+}
+
+.poster-img {
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 0 0px 20rpx 20rpx;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.3, 1.3, 1.3);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  animation-name: pulse;
+}
+
+
+
+/* animate.css */
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.bounceIn {
+  animation-name: bounceIn;
+  animation-duration: .75s;
+}
+
+@keyframes bounceIn {
+
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    transform: scale3d(.9, .9, .9);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    transform: scale3d(.97, .97, .97);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.zoom-background-image {
+  animation: scale 30s linear infinite;
+}
+
+@keyframes scale {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.swiper-canvas {
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.direction-area {
+  position: absolute;
+  top: calc(100% / 2);
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lee-icon {
+  display: inline-block;
+  height: 70rpx;
+  width: 57rpx;
+  font-size: 40rpx;
+  box-sizing: border-box;
+  text-indent: -9999px;
+  vertical-align: middle;
+  position: relative;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+}
+
+.lee-icon::before,
+.lee-icon::after {
+  content: '';
+  box-sizing: inherit;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon-arrow-right::before {
+  height: 30rpx;
+  width: 30rpx;
+  border-style: solid;
+  border-width: 4rpx 0 0 4rpx;
+  transform: translate(-75%, -50%) rotate(135deg);
+}
+
+.icon-arrow-left::before {
+  height: 30rpx;
+  width: 30rpx;
+  border-style: solid;
+  border-width: 4rpx 0 0 4rpx;
+  transform: translate(-25%, -50%) rotate(-45deg);
+}

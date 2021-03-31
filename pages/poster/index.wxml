@@ -1,0 +1,35 @@
+<view class="img">
+    <image mode="widthFix" src="{{logo}}" />
+</view>
+<view class="input">
+    <wux-input placeholder="请填写产品品名" value="{{ productName }}" bind:change="onChangeProductName" />
+</view>
+<view class="item" wx:for="{{list}}" wx:key="index">
+    <view class="item_left">
+        <view class="item_left_nameDiv">
+            <view class="item_left_name">{{item.name}}</view>
+            <image mode="widthFix" class="item_left_its_img" src="/images/jian.png" data-id="{{item.id}}" data-index="{{index}}" bind:tap="removeItem" />
+        </view>
+        <view class="item_left_tag">{{item.brief}}</view>
+        <view class="item_left_its" wx:for="{{item.specificationList}}" wx:for-item="its" wx:key="index">
+            <view class="item_left_its_view">
+                <wux-input placeholder-style="font-size:26rpx" class="wux_input_left" placeholder="请填写规格" value="{{ its.specification }}" controlled data-type="specification" data-id="{{item.id}}" data-index="{{index}}" bind:change="onChangeInput" />
+                <wux-input placeholder-style="font-size:26rpx" class="wux_input_right" placeholder="请填写价格" value="{{ its.value }}" controlled data-type="value" data-id="{{item.id}}" data-index="{{index}}" bind:change="onChangeInput">
+                    <text class="item_qian">¥</text>
+                </wux-input>
+                <image wx:if="{{index == 0 && item.specificationList.length < 3}}" mode="widthFix" class="item_left_its_img" src="/images/xiaojia.png" data-id="{{item.id}}" bind:tap="addSpecification" />
+                <image wx:else mode="widthFix" class="item_left_its_img" src="/images/jian.png" data-id="{{item.id}}" data-index="{{index}}" bind:tap="removeSpecification" />
+            </view>
+        </view>
+    </view>
+    <view class="item_right">
+        <image mode="widthFix" src="{{item.img}}" />
+        <view class="item_right_view">扫码更多详情</view>
+    </view>
+</view>
+<view class="item_more" bind:tap="add" wx:if="{{list.length < 3 }}">
+    <image class="item_more_img" mode="widthFix" src="/images/jia.png" />
+</view>
+<view style="height:100rpx"></view>
+<view class="btn" bind:tap="commitPoster">一键生成价签</view>
+<c-poster id="posterComponent" />

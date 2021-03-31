@@ -1,0 +1,46 @@
+<view class="searchBar">
+    <wux-button bind:click="gotoSearchPage" size="small" hoverClass="none" block type="light">
+        <wux-icon class="searchBar-icon" type="ios-search" size="16" />
+        搜索
+    </wux-button>
+</view>
+<view class="category">
+    <scroll-view class="category-left" scroll-y="true" scroll-with-animation="true">
+        <view bind:tap="changeTab" data-item="{{item}}" class="['category-left-item',{{categoryKey == item.id?'categoryKey':''}}]" wx:for="{{currentSubCategory}}" wx:key="id">
+            {{item.name}}
+        </view>
+    </scroll-view>
+    <scroll-view refresher-triggered="{{refresherTriggered}}" refresher-enabled="true" scroll-anchoring="true" bindrefresherrefresh="getRefreshList" bindscrolltolower="getMoreList" class="category-right" scroll-y="true" scroll-with-animation="true">
+        <view class="goodsList category-right-item">
+            <view style="display:flex;flex-wrap:wrap">
+                <view class="['categoryClassItem',{{subclass == 0 ? 'classChoose':''}}]" data-id="{{0}}" bindtap="changeClass" >
+                    综合
+                </view>
+                <view class="['categoryClassItem',{{subclass == item.id ? 'classChoose':''}}]" wx:for="{{categoryItem.children}}" wx:key="id" data-id="{{item.id}}" bindtap="changeClass">
+                    {{item.name}}
+                </view>
+            </view>
+            <!-- <view wx:if="{{categoryItem.picUrl}}" class="goodsList-pic">
+                <image src="{{categoryItem.picUrl}}" alt="" />
+            </view> -->
+            <view class="goods-container">
+                <view class="goods-box" wx:for="{{goodsList}}" wx:key="id" bindtap="toDetailsTap" data-id="{{item.id}}">
+                    <view class="img-box">
+                        <image src="{{item.picUrl}}" class="image" mode="aspectFill" lazy-load="true" />
+                    </view>
+                    <view>
+                        <view class="goods-title">{{item.name}}</view>
+                        <view class="goods-price">
+                            <text>{{item.brief}}</text>
+                            <view  class="red goods-price_price">
+                                <text>¥ {{item.counterPrice}}</text>
+                                <image  wx:if="{{item.vr != ''}}" mode="widthFix" src="/images/vr.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="noMore" wx:if="{{pageIndex > pages}}">没有更多内容了</view>
+        </view>
+    </scroll-view>
+</view>

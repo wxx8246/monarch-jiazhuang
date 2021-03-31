@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "价签生成",
+  "usingComponents": {
+    "c-poster": "/components/poster/index"
+  }
+}

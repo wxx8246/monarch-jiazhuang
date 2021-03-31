@@ -1,0 +1,129 @@
+
+.search{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+.none{
+  width: 100%;
+  height: 46px;
+}
+.noList{
+    text-align: center;
+    padding: 20rpx;
+    font-size: 24rpx;
+}
+.newGoodsList{
+    background: #fff;
+  }
+  .newGoodsList-name{
+    padding: 24rpx;
+    font-size: 40rpx;
+    font-weight: 600;
+  }
+  .newGoodsList-pic{
+    height: 270rpx;
+    padding: 10rpx 24rpx;
+  }
+  .newGoodsList-pic image{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+  .goods-container{
+    display: flex;
+    justify-content: space-between;  
+    flex-wrap:wrap;
+    box-sizing: content-box;
+    padding: 24rpx;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+  }
+  .goods-box{
+    width: 339rpx;
+    height: 472rpx;
+    background-color: #f9f8f8;
+    overflow: hidden;
+    margin-bottom: 24rpx;
+    border-radius:5px;
+    border: 1px solid #f3f3f3;
+  }
+  .goods-box .img-box{
+    width: 339rpx;
+    height: 339rpx;
+    overflow: hidden;
+  }
+  .goods-box .img-box image{
+     width: 339rpx;
+     height: 339rpx;
+  }
+  .goods-box .goods-title{
+    font-weight: 600;
+    width: 280rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 24rpx;
+    padding: 24rpx 0 0rpx 0;
+    color:#000;
+    margin-left: 24rpx;
+  }
+  .goods-box .goods-price{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 280rpx;
+    overflow: hidden;
+    font-size: 24rpx;
+    padding: 24rpx 0;
+    color:#e64340;
+    margin-left: 24rpx;
+  }
+  .goods-price text{
+    margin-right: 10rpx;
+  }
+
+
+  .popName{
+    padding: 30rpx 20rpx 10rpx 20rpx;
+    text-align: left;
+    color: #636161;
+  }
+  #pop .wux-cell-group__hd{
+    padding: 10rpx 20rpx 20rpx 20rpx ;
+    font-size: 24rpx;
+    text-align: left;
+  }
+  #pop .wux-popup__hd{
+    padding: 0 ;
+    text-align: left;
+  }
+  #pop .wux-popup__bd{
+    padding: 0 ;
+  }
+  #pop .wux-popup__ft{
+    padding: 0 ;
+  }
+  .popButtom{
+    display: flex;
+    justify-content: space-between;
+  }
+  .popButtom_exit{
+    width: 50%;
+    height: 100rpx;
+    background: #8b8b8c;    
+    line-height: 100rpx;
+    font-size: 30rpx;
+    font-weight: 550;
+    color: white;
+  }
+  .popButtom_commit{
+    width: 50%;
+    height: 100rpx;
+    background: #e44f39;    
+    line-height: 100rpx;
+    font-size: 30rpx;
+    font-weight: 550;
+    color: white;
+  }

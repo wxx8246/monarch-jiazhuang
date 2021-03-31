@@ -1,0 +1,15 @@
+<wux-refresher distance="10" id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh" bind:loadmore="onLoadmore" scrollTop="{{scrollTop}}">
+    <wux-swipe-action bind:click="cancel" class="swipe" autoClose right="{{ right }}"  wx:for="{{list}}" wx:key="id" bindtap="toDetailsTap" data-id="{{item.valueId}}">
+        <view class="goods-box">
+            <view class="img-box">
+                <image src="{{item.picUrl}}" class="image" mode="aspectFill" lazy-load="true" />
+            </view>
+            <view>
+                <view class="goods-title">{{item.name}}</view>
+                <view class="goods-price">
+                    <text>{{item.brief}}</text>
+                </view>
+            </view>
+        </view>
+    </wux-swipe-action>
+</wux-refresher>

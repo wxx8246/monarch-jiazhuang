@@ -1,0 +1,26 @@
+<view class="top">
+    <view class="userAvatarUrl">
+        <image src="{{userAvatarUrl}}" />
+    </view>
+    <view class="userNickName" wx:if="{{userNickName}}">{{userNickName}}</view>
+    <button class="btn" wx:else open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+        微信授权
+    </button>
+    <button wx:if="{{userNickName && member == 0}}" class="btn" open-type="getPhoneNumber" bindgetphonenumber="bindgetphonenumber">
+        手机一键登录
+    </button>
+</view>
+<wux-cell-group title="" class="center">
+    <wux-cell wx:if="{{member == 1 && distributor == 1 && memberType == 1}}" is-link thumb="{{img4}}" title="价签生成" url="../poster/index" extra=""></wux-cell>
+    <wux-cell is-link thumb="{{img1}}" title="我的收藏" url="../collection/index" extra=""></wux-cell>
+    <wux-cell is-link thumb="{{img2}}" title="联系客服" bind:click="getCall" extra=""></wux-cell>
+    <wux-cell is-link thumb="{{img3}}" title="用户反馈" url="../feedback/index" extra=""></wux-cell>
+    <wux-cell wx:if="{{mobile!=''}}" is-link thumb="{{img5}}" title="解绑手机" bind:click="deleteMobile" extra=""></wux-cell>
+</wux-cell-group>
+<view class="version">{{version}}</view>
+<view class="loginOut" wx:if="{{member == 1&& distributor ==1}}" bind:tap="changeMemberType">
+    <image mode="widthFix" class="qiehuan" src="{{memberType == 1 ? '/images/lsb.png':'/images/gcb.png'}}" />
+</view>
+<!-- <view class="logo">
+    <image src="{{logo}}" />
+</view> -->

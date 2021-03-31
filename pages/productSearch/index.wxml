@@ -1,0 +1,34 @@
+<view class="search">
+    <wux-search-bar clear focus placeholder="搜索产品" bind:confirm="onSearch" />
+</view>
+<view class="none"></view>
+<wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh" bind:loadmore="onLoadmore" scrollTop="{{scrollTop}}">
+    <!-- 产品 -->
+    <view class="newGoodsList">
+        <view wx:if="{{list.length > 0}}" class="goods-container">
+            <view class="goods-box" wx:for="{{list}}" wx:key="id" bindtap="toDetailsTap" data-id="{{item.id}}">
+                <view class="img-box">
+                    <image src="{{item.picUrl}}" class="image" mode="aspectFill" lazy-load="true" />
+                </view>
+                <view class="goods-title">{{item.name}}</view>
+                <view class="goods-price">
+                    <text>{{item.brief}}</text>
+                    <!-- <text wx:for="{{item.tag}}" wx:key="index">{{item}}</text> -->
+                </view>
+            </view>
+        </view>
+        <view wx:else class="noList">没有更多数据了</view>
+    </view>
+</wux-refresher>
+<wux-popup position="bottom" visible="{{ popVisible }}"  id="pop" catchtouchmove="emptyFunction">
+    <view class="popName">{{popItem.name}}</view>
+    <scroll-view class="pop_center" scroll-y="true" style="max-height: 600rpx;min-height:600rpx">
+        <wux-checkbox-group value="{{ checkArr }}" title="请选择需要展示的产品规格" bind:change="onChangeCheckbox">
+            <wux-checkbox wx:for="{{popItem.goodsProductList}}" wx:key="index" color="light" title="{{item.name + ' ¥' + item.price + item.company }}" value="{{index}}" />
+        </wux-checkbox-group>
+    </scroll-view>
+    <view class="popButtom">
+        <view class="popButtom_exit" bind:tap="onClose">取 消</view>
+        <view class="popButtom_commit" bind:tap="onCommit" >确 认</view>
+    </view>
+</wux-popup>

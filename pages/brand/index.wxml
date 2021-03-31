@@ -1,0 +1,30 @@
+<wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh" bind:loadmore="onLoadmore" scrollTop="{{scrollTop}}">
+    <!-- <view class="list" wx:for="{{list}}" wx:key="index" data-id="{{item.id}}" bind:tap="goDetail">
+        <view class="listItem" style="background:url({{item.picUrl}})no-repeat;background-size: 100% 100%;">
+            <view class="listItemTitle">
+                <text class="listItemTitleT1">{{item.title}}</text>
+                <view class="listItemTitleT2">
+                    <wux-icon class="icon" type="md-eye" size="18" />
+                    {{item.readCount}}
+                </view>
+            </view>
+        </view>
+        <view class="listItemSub">{{item.subtitle}}</view>
+    </view> -->
+    <view class="divV">
+        <wux-timeline class="timeline">
+            <wux-timeline-item content="{{item.time}}" wx:for="{{list}}" wx:key="index">
+                <view class="timeline_left">
+                    <view class="timeline_left_t1">{{item.day}}</view>
+                    <view>|</view>
+                    <view>{{item.month}}月</view>
+                </view>
+                <view class="time_msg">
+                    <view  class="time_msg_t1">{{item.title}}</view>
+                    <view class="time_msg_t2">{{item.subtitle}}</view>
+                    <image class="img" src="{{item.picUrl}}" data-src="{{item.picUrl}}" bind:tap="previewImage" />
+                </view>
+            </wux-timeline-item>
+        </wux-timeline>
+    </view>
+</wux-refresher>
