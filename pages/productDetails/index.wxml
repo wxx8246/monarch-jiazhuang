@@ -69,6 +69,22 @@
         </text>
     </view>
 </view>
+<view id="click_pdf" class="specifications" bind:tap="openPDF">
+  <view class="specifications_tag">
+    <text>{{'安装说明'}}</text>
+  </view>
+  <view class="specifications_text">
+    <wux-icon size="26" color="#797271" type="ios-more"></wux-icon>
+  </view>
+</view>
+<view id="click_pdf" class="specifications" bind:tap="openPDF2">
+  <view class="specifications_tag">
+    <text>{{'使用说明'}}</text>
+  </view>
+  <view class="specifications_text">
+    <wux-icon size="26" color="#797271" type="ios-more"></wux-icon>
+  </view>
+</view>
 <view class="details">
     <view class="detailsTitle">图文详情</view>
     <parser class="richText" html="{{details.detail}}" />

@@ -9,7 +9,10 @@
     "pages/productDetails/index",
     "pages/feedback/index",
     "pages/productSearch/index",
-    "pages/activity/index"
+    "pages/activity/index",
+    "pages/vr/index",
+    "pages/poster/index",
+    "pages/shouhou/index"
     
   ],
   "window": {

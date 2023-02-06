@@ -14,10 +14,10 @@ Page({
     vrList: [], //规格参数
     specification_choose: {
 
-    },  //规格参数中选中的项
+    }, //规格参数中选中的项
     vr_choose: {
 
-    },  //vr中选中的项
+    }, //vr中选中的项
     collect: '加入收藏',
     popVisible: false,
     vrVisible: false,
@@ -38,6 +38,7 @@ Page({
   },
   goVr() {
     let item = this.data.details.vr
+    console.log(item)
     if (item == '') {
       return
     }
@@ -66,12 +67,12 @@ Page({
         a: type,
         b: choose
       })
-    } else {//如果有这一类,改变选中的项
+    } else { //如果有这一类,改变选中的项
       specification_choose.specification.map((item, index) => {
         if (item.a == type && item.b != choose) { //选中的项不一样就改变 
           item.b = choose
           return
-        } else if (item.a == type && item.b == choose) {//选中的还是之前那个,就清空
+        } else if (item.a == type && item.b == choose) { //选中的还是之前那个,就清空
           specification_choose.specification.splice(index, 1)
         }
       })
@@ -172,12 +173,12 @@ Page({
         a: type,
         b: choose
       })
-    } else {//如果有这一类,改变选中的项
+    } else { //如果有这一类,改变选中的项
       vr_choose.specification.map((item, index) => {
         if (item.a == type && item.b != choose) { //选中的项不一样就改变 
           item.b = choose
           return
-        } else if (item.a == type && item.b == choose) {//选中的还是之前那个,就清空
+        } else if (item.a == type && item.b == choose) { //选中的还是之前那个,就清空
           vr_choose.specification.splice(index, 1)
         }
       })
@@ -413,18 +414,83 @@ Page({
   //     canvasText: '保存图片到相册'
   //   })
   // },
+  openPDF() {
+    wx.showLoading({
+      title: '请求中',
+    })
+    wx.downloadFile({
+      // 示例 url，并非真实存在
+      url: this.data.details.pdfUrl,
+      success: function (res) {
+        wx.hideLoading()
+        const filePath = res.tempFilePath
+        wx.openDocument({
+          filePath: filePath,
+          success: function (res) {
+            console.log('打开文档成功')
+          }
+        })
+      },
+      fail: function (res) {
+        wx.hideLoading()
+        wx.showToast({
+          title: '暂无安装说明!',
+          icon: 'none'
+        })
+      }
+    })
 
+  },
+  openPDF2() {
+    wx.showLoading({
+      title: '请求中',
+    })
+    wx.downloadFile({
+      // 示例 url，并非真实存在
+      url: this.data.details.pdfUrl2,
+      success: function (res) {
+        wx.hideLoading()
+        const filePath = res.tempFilePath
+        wx.openDocument({
+          filePath: filePath,
+          success: function (res) {
+            console.log('打开文档成功')
+          }
+        })
+      },
+      fail: function (res) {
+        wx.hideLoading()
+        wx.showToast({
+          title: '暂无使用说明!',
+          icon: 'none'
+        })
+      }
+    })
+
+  },
   getDetails(id) {
     http.GET({
       url: config.apiUrl + '/wx/jz/detail?id=' + id,
       // params: params,
       success: res => {
-        console.log(res.data);
+        if (!res.data.info) {
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            content: '无产品信息,请联系管理员!',
+            success: res => {
+              wx.switchTab({
+                url: '/pages/index/index',
+              })
+            }
+          })
+          return
+        }
         let specification_choose = {
           picUrl: res.data.info.picUrl ? res.data.info.picUrl : '',
           specification: [],
           value: res.data.info.counterPrice,
-          isStart: true   //表示是刚开始还未选中规格
+          isStart: true //表示是刚开始还未选中规格
         }
         this.setData({
           details: res.data.info,
@@ -517,5 +583,3 @@ Page({
     }
   }
 })
-
-

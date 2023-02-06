@@ -41,9 +41,9 @@
     </view>
   </view>
   
-  <view class="diwang" bindtap="goDiwang">
+  <!-- <view class="diwang" bindtap="goDiwang">
     <image mode="aspectFit" src="/images/diwangquanweijia.png"></image>
-  </view>
+  </view> -->
   <!-- 广告弹出层 -->
   <view class="popUpDiv" wx:if="{{popUp.url && example.in}}">
     <wux-animation-group wux-class="example" in="{{ example.in }}" enter="{{ example.enter }}" exit="{{ example.exit }}" class-names="{{ example.classNames }}">
